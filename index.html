@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Yoga Studio - Subscriptions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🧘‍♀️ Zen Yoga Studio</h1>
+            <nav class="nav">
+                <button id="loginBtn" class="nav-btn">Login</button>
+                <button id="registerBtn" class="nav-btn">Register</button>
+                <button id="dashboardBtn" class="nav-btn hidden">Dashboard</button>
+                <button id="logoutBtn" class="nav-btn hidden">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Registration/Login Form -->
+        <section id="authSection" class="auth-section">
+            <div class="container">
+                <div id="loginForm" class="auth-form">
+                    <h2>Login</h2>
+                    <form>
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+                </div>
+
+                <div id="registerForm" class="auth-form hidden">
+                    <h2>Register</h2>
+                    <form>
+                        <input type="text" id="registerName" placeholder="Full Name" required>
+                        <input type="email" id="registerEmail" placeholder="Email" required>
+                        <input type="password" id="registerPassword" placeholder="Password" required>
+                        <input type="tel" id="registerPhone" placeholder="Phone Number" required>
+                        <button type="submit">Register</button>
+                    </form>
+                    <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subscription Packages -->
+        <section id="packagesSection" class="packages-section hidden">
+            <div class="container">
+                <h2>Choose Your Yoga Journey</h2>
+                <div class="packages-grid">
+                    <!-- Monthly Packages -->
+                    <div class="package-card" data-package="morning-monthly">
+                        <h3>Morning Bliss Monthly</h3>
+                        <p class="price">$89/month</p>
+                        <p class="schedule">Mon-Fri: 6:00 AM - 7:30 AM</p>
+                        <ul class="features">
+                            <li>Morning Vinyasa Flow</li>
+                            <li>Meditation Sessions</li>
+                            <li>20 sessions per month</li>
+                        </ul>
+                        <button class="select-package">Select Package</button>
+                    </div>
+
+                    <div class="package-card" data-package="evening-monthly">
+                        <h3>Evening Zen Monthly</h3>
+                        <p class="price">$89/month</p>
+                        <p class="schedule">Mon-Fri: 6:00 PM - 7:30 PM</p>
+                        <ul class="features">
+                            <li>Restorative Yoga</li>
+                            <li>Stress Relief Focus</li>
+                            <li>20 sessions per month</li>
+                        </ul>
+                        <button class="select-package">Select Package</button>
+                    </div>
+
+                    <div class="package-card" data-package="weekend-monthly">
+                        <h3>Weekend Warrior Monthly</h3>
+                        <p class="price">$59/month</p>
+                        <p class="schedule">Sat-Sun: 9:00 AM - 10:30 AM</p>
+                        <ul class="features">
+                            <li>Power Yoga</li>
+                            <li>Strength Building</li>
+                            <li>8 sessions per month</li>
+                        </ul>
+                        <button class="select-package">Select Package</button>
+                    </div>
+
+                    <!-- Yearly Packages -->
+                    <div class="package-card yearly" data-package="morning-yearly">
+                        <div class="yearly-badge">Best Value</div>
+                        <h3>Morning Bliss Yearly</h3>
+                        <p class="price">$890/year <span class="save">Save $178</span></p>
+                        <p class="schedule">Mon-Fri: 6:00 AM - 7:30 AM</p>
+                        <ul class="features">
+                            <li>Morning Vinyasa Flow</li>
+                            <li>Meditation Sessions</li>
+                            <li>240 sessions per year</li>
+                            <li>2 free guest passes</li>
+                        </ul>
+                        <button class="select-package">Select Package</button>
+                    </div>
+
+                    <div class="package-card yearly" data-package="evening-yearly">
+                        <div class="yearly-badge">Best Value</div>
+                        <h3>Evening Zen Yearly</h3>
+                        <p class="price">$890/year <span class="save">Save $178</span></p>
+                        <p class="schedule">Mon-Fri: 6:00 PM - 7:30 PM</p>
+                        <ul class="features">
+                            <li>Restorative Yoga</li>
+                            <li>Stress Relief Focus</li>
+                            <li>240 sessions per year</li>
+                            <li>2 free guest passes</li>
+                        </ul>
+                        <button class="select-package">Select Package</button>
+                    </div>
+
+                    <div class="package-card yearly" data-package="unlimited-yearly">
+                        <div class="yearly-badge">Premium</div>
+                        <h3>Unlimited Yearly</h3>
+                        <p class="price">$1490/year <span class="save">All Sessions</span></p>
+                        <p class="schedule">All available time slots</p>
+                        <ul class="features">
+                            <li>All yoga styles</li>
+                            <li>Unlimited sessions</li>
+                            <li>Priority booking</li>
+                            <li>5 free guest passes</li>
+                        </ul>
+                        <button class="select-package">Select Package</button>
+                    </div>
+                </div>
+
+                <div id="selectedPackages" class="selected-packages">
+                    <h3>Your Selected Packages</h3>
+                    <div id="packagesList" class="packages-list"></div>
+                    <div id="conflictWarning" class="conflict-warning hidden">
+                        ⚠️ Schedule Conflict Detected! Some of your selected packages have overlapping times. Please review your selection.
+                    </div>
+                    <button id="proceedBtn" class="proceed-btn hidden">Proceed to Payment</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Dashboard -->
+        <section id="dashboardSection" class="dashboard-section hidden">
+            <div class="container">
+                <h2>Your Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Active Subscriptions</h3>
+                        <div id="activeSubscriptions"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Upcoming Sessions</h3>
+                        <div id="upcomingSessions"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Account Info</h3>
+                        <div id="accountInfo"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Zen Yoga Studio. Find your inner peace.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
